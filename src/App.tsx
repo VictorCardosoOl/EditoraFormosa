@@ -5,6 +5,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import { ArrowUpRight, ArrowLeft, ArrowRight, Play } from 'lucide-react';
 import SmoothScrollProvider from './components/layout/SmoothScrollProvider';
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -227,28 +228,7 @@ export default function App() {
             </div>
           </section>
 
-          {/* Footer */}
-          <footer className="bg-black text-white grid grid-cols-1 md:grid-cols-4 text-[9px] md:text-[10px] 3xl:text-xs uppercase tracking-widest font-medium">
-            <div className="p-6 md:p-8 3xl:p-12 border-b md:border-b-0 md:border-r border-white/20 flex flex-col justify-between min-h-[200px] 3xl:min-h-[300px]">
-              <div>Fundação Villa<br/>Rua da Matriz, 42<br/>São Paulo SP 01000-000<br/>Brasil</div>
-              <div className="text-[8px] 3xl:text-[10px] opacity-50 mt-8">EST. 2026</div>
-            </div>
-            <div className="p-6 md:p-8 3xl:p-12 border-b md:border-b-0 md:border-r border-white/20 flex flex-col justify-between">
-              <div>1-514-849-3742<br/>1-888-934-2278<br/>info@fundacaovilla.org</div>
-              <a href="#" className="underline underline-offset-4 hover:opacity-70 mt-8">Assine a Newsletter</a>
-            </div>
-            <div className="p-6 md:p-8 3xl:p-12 border-b md:border-b-0 md:border-r border-white/20">
-              Horário de funcionamento<br/><br/>Quarta — Sexta: 12 PM — 7 PM<br/>Sábado — Domingo: 11 AM — 6 PM<br/><br/>Entrada gratuita
-            </div>
-            <div className="p-6 md:p-8 3xl:p-12 flex flex-col justify-between">
-              <p className="opacity-70 leading-relaxed">© O conteúdo deste site é protegido. Qualquer reprodução é estritamente proibida sem autorização prévia.</p>
-              <div className="flex gap-6 mt-8 md:mt-4">
-                <a href="#" className="hover:text-[#B85741] transition-colors">INSTAGRAM</a>
-                <a href="#" className="hover:text-[#B85741] transition-colors">TWITTER</a>
-                <a href="#" className="hover:text-[#B85741] transition-colors">ARE.NA</a>
-              </div>
-            </div>
-          </footer>
+          <Footer />
 
         </div>
       </div>

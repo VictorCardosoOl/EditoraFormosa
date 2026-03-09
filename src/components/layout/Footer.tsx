@@ -1,63 +1,105 @@
-import { useState } from 'react';
-import { Button } from '../ui/Button';
+import { ArrowRight, Instagram, Twitter, Linkedin, Mail } from 'lucide-react';
 
-export function Footer() {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      // Aqui entraria a integração com a API de Newsletter (ex: Mailchimp, Resend)
-    }
-  };
-
+export default function Footer() {
   return (
-    <footer className="bg-black text-white grid grid-cols-1 md:grid-cols-4 text-[9px] md:text-[10px] 3xl:text-xs uppercase tracking-widest font-medium">
-      <div className="p-6 md:p-8 3xl:p-12 border-b md:border-b-0 md:border-r border-white/20 flex flex-col justify-between min-h-[200px] 3xl:min-h-[300px]">
-        <div>Fundação Villa<br/>Rua da Matriz, 42<br/>São Paulo SP 01000-000<br/>Brasil</div>
-        <div className="text-[8px] 3xl:text-[10px] opacity-50 mt-8">EST. 2026</div>
-      </div>
+    <footer className="relative bg-stone-950 text-stone-400 overflow-hidden border-t border-stone-900">
       
-      <div className="p-6 md:p-8 3xl:p-12 border-b md:border-b-0 md:border-r border-white/20 flex flex-col justify-between">
-        <div>1-514-849-3742<br/>1-888-934-2278<br/>info@fundacaovilla.org</div>
-        
-        <div className="mt-8">
-          {submitted ? (
-            <p className="text-[#B85741]">Obrigado por assinar. Em breve entraremos em contato.</p>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-              <label htmlFor="newsletter" className="sr-only">Assine a Newsletter</label>
-              <p className="mb-2">Assine a Newsletter</p>
-              <div className="flex border-b border-white/50 pb-2">
-                <input 
-                  type="email" 
-                  id="newsletter"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="SEU MELHOR E-MAIL" 
-                  className="bg-transparent outline-none w-full placeholder:text-white/30"
-                  required
-                />
-                <button type="submit" className="hover:text-[#B85741] transition-colors" aria-label="Enviar">OK</button>
-              </div>
-            </form>
-          )}
-        </div>
+      {/* 1. Noise Texture Overlay */}
+      <div className="absolute inset-0 opacity-[0.07] mix-blend-overlay pointer-events-none z-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+        </svg>
       </div>
 
-      <div className="p-6 md:p-8 3xl:p-12 border-b md:border-b-0 md:border-r border-white/20">
-        Horário de funcionamento<br/><br/>Quarta — Sexta: 12 PM — 7 PM<br/>Sábado — Domingo: 11 AM — 6 PM<br/><br/>Entrada gratuita
+      {/* 2. Massive Background Typography */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none select-none flex justify-center translate-y-[20%] z-0">
+        <span className="font-serif text-[18vw] leading-none text-stone-900/50 whitespace-nowrap tracking-tighter">
+          VILLA
+        </span>
       </div>
-      
-      <div className="p-6 md:p-8 3xl:p-12 flex flex-col justify-between">
-        <p className="opacity-70 leading-relaxed">© O conteúdo deste site é protegido. Qualquer reprodução é estritamente proibida sem autorização prévia.</p>
-        <div className="flex gap-6 mt-8 md:mt-4">
-          <a href="#" className="hover:text-[#B85741] transition-colors" aria-label="Instagram">INSTAGRAM</a>
-          <a href="#" className="hover:text-[#B85741] transition-colors" aria-label="Twitter">TWITTER</a>
-          <a href="#" className="hover:text-[#B85741] transition-colors" aria-label="Are.na">ARE.NA</a>
+
+      {/* 3. Main Grid Layout */}
+      <div className="relative z-10 w-full max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        
+        {/* Col 1: Identity */}
+        <div className="p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-stone-800/50 flex flex-col justify-between min-h-[350px]">
+          <div>
+            <h3 className="font-serif text-4xl text-stone-200 tracking-tight">Fundação Villa</h3>
+            <p className="font-serif italic text-stone-500 mt-6 text-xl leading-relaxed">
+              A arte da encadernação manual e o peso da palavra impressa.
+            </p>
+          </div>
+          <div className="text-[10px] uppercase tracking-widest mt-12 text-stone-500">
+            Est. 2026
+          </div>
         </div>
+
+        {/* Col 2: Local / CTA */}
+        <div className="p-8 md:p-12 lg:p-16 border-b md:border-b-0 lg:border-r border-stone-800/50 flex flex-col justify-between min-h-[350px]">
+          <div>
+            <div className="text-[10px] uppercase tracking-widest mb-8 text-stone-500">Localização</div>
+            <p className="text-sm leading-loose text-stone-300">
+              Rua da Matriz, 42<br />
+              São Paulo SP 01000-000<br />
+              Brasil
+            </p>
+          </div>
+          <a href="#" className="inline-flex items-center gap-3 text-xs uppercase tracking-widest text-stone-200 hover:text-white transition-colors mt-12 group w-fit">
+            Agendar Visita 
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+          </a>
+        </div>
+
+        {/* Col 3: Social */}
+        <div className="p-8 md:p-12 lg:p-16 border-b md:border-b-0 lg:border-r border-stone-800/50 flex flex-col justify-between min-h-[350px]">
+          <div>
+            <div className="text-[10px] uppercase tracking-widest mb-8 text-stone-500">Conectar</div>
+            <div className="flex flex-col gap-5">
+              <a href="#" className="inline-flex items-center gap-4 text-sm hover:text-white transition-colors group w-fit">
+                <Instagram className="w-4 h-4 text-stone-500 group-hover:text-white transition-colors" /> 
+                <span className="group-hover:translate-x-1 transition-transform duration-300">Instagram</span>
+              </a>
+              <a href="#" className="inline-flex items-center gap-4 text-sm hover:text-white transition-colors group w-fit">
+                <Twitter className="w-4 h-4 text-stone-500 group-hover:text-white transition-colors" /> 
+                <span className="group-hover:translate-x-1 transition-transform duration-300">Twitter (X)</span>
+              </a>
+              <a href="#" className="inline-flex items-center gap-4 text-sm hover:text-white transition-colors group w-fit">
+                <Linkedin className="w-4 h-4 text-stone-500 group-hover:text-white transition-colors" /> 
+                <span className="group-hover:translate-x-1 transition-transform duration-300">LinkedIn</span>
+              </a>
+            </div>
+          </div>
+          <a href="mailto:info@fundacaovilla.org" className="inline-flex items-center gap-3 text-xs tracking-widest mt-12 hover:text-white transition-colors group w-fit">
+            <Mail className="w-4 h-4 text-stone-500 group-hover:text-white transition-colors" />
+            info@fundacaovilla.org
+          </a>
+        </div>
+
+        {/* Col 4: Menu / Credits */}
+        <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-between min-h-[350px]">
+          <div>
+            <div className="text-[10px] uppercase tracking-widest mb-8 text-stone-500">Navegação</div>
+            <nav className="flex flex-col gap-4">
+              {['O Manifesto', 'Acervo Visual', 'Lançamentos', 'Reservas', 'Termos de Uso'].map((link) => (
+                <a 
+                  href="#" 
+                  key={link} 
+                  className="text-sm text-stone-300 hover:text-white transition-all duration-300 hover:translate-x-2 w-fit"
+                >
+                  {link}
+                </a>
+              ))}
+            </nav>
+          </div>
+          <div className="text-[10px] uppercase tracking-widest mt-12 text-stone-600 flex flex-col gap-2">
+            <span>© 2026 Fundação Villa</span>
+            <span>Design por Especialista UX</span>
+          </div>
+        </div>
+
       </div>
     </footer>
   );
