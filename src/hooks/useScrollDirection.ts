@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export function useScrollDirection() {
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
-  const [isAtTop, setIsAtTop] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(() => window.scrollY <= 10);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -32,9 +32,6 @@ export function useScrollDirection() {
 
     window.addEventListener('scroll', onScroll);
     
-    // Initial check
-    setIsAtTop(window.scrollY <= 10);
-
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 

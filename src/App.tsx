@@ -23,8 +23,8 @@ export default function App() {
     });
 
     // 2. Image Parallax & Reveal
-    const images = gsap.utils.toArray('.reveal-img');
-    images.forEach((img: any) => {
+    const images = gsap.utils.toArray<HTMLElement>('.reveal-img');
+    images.forEach((img) => {
       gsap.fromTo(img, 
         { scale: 1.2 },
         {
@@ -42,8 +42,8 @@ export default function App() {
     });
 
     // 3. Text Block Reveals
-    const textBlocks = gsap.utils.toArray('.reveal-text');
-    textBlocks.forEach((text: any) => {
+    const textBlocks = gsap.utils.toArray<HTMLElement>('.reveal-text');
+    textBlocks.forEach((text) => {
       gsap.from(text, {
         y: 40,
         opacity: 0,
@@ -87,27 +87,21 @@ export default function App() {
           {/* Marquee Section */}
           <section className="border-b border-black overflow-hidden flex whitespace-nowrap py-3 md:py-4 3xl:py-6 bg-black text-white text-[10px] md:text-xs 3xl:text-sm uppercase tracking-[0.2em] font-medium">
             <div className="marquee-content flex items-center">
-              <div className="flex gap-8 3xl:gap-12 items-center pr-8 3xl:pr-12">
-                <span>A ARTE DA ENCADERNAÇÃO MANUAL</span>
-                <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 bg-white rounded-full"></span>
-                <span>O PESO DA PALAVRA IMPRESSA</span>
-                <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 bg-white rounded-full"></span>
-                <span>EDIÇÕES ESTRITAMENTE LIMITADAS</span>
-                <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 bg-white rounded-full"></span>
-                <span>MANIFESTO DIGITAL 2026</span>
-                <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 bg-white rounded-full"></span>
-              </div>
-              {/* Duplicate for seamless loop */}
-              <div className="flex gap-8 3xl:gap-12 items-center pr-8 3xl:pr-12">
-                <span>A ARTE DA ENCADERNAÇÃO MANUAL</span>
-                <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 bg-white rounded-full"></span>
-                <span>O PESO DA PALAVRA IMPRESSA</span>
-                <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 bg-white rounded-full"></span>
-                <span>EDIÇÕES ESTRITAMENTE LIMITADAS</span>
-                <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 bg-white rounded-full"></span>
-                <span>MANIFESTO DIGITAL 2026</span>
-                <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 bg-white rounded-full"></span>
-              </div>
+              {[1, 2].map((set) => (
+                <div key={set} className="flex gap-8 3xl:gap-12 items-center pr-8 3xl:pr-12">
+                  {[
+                    "A ARTE DA ENCADERNAÇÃO MANUAL",
+                    "O PESO DA PALAVRA IMPRESSA",
+                    "EDIÇÕES ESTRITAMENTE LIMITADAS",
+                    "MANIFESTO DIGITAL 2026"
+                  ].map((text, i) => (
+                    <div key={i} className="flex gap-8 3xl:gap-12 items-center">
+                      <span>{text}</span>
+                      <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 bg-white rounded-full"></span>
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
           </section>
 
