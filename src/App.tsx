@@ -146,6 +146,73 @@ export default function App() {
             </div>
           </section>
 
+          {/* Section 2: Featured Publications (Books as Art) */}
+          <section className="relative border-b border-black bg-white">
+            <NoiseOverlay />
+            <div className="grid grid-cols-1 lg:grid-cols-12">
+              {/* Header Column */}
+              <div className="lg:col-span-3 p-8 md:p-12 3xl:p-16 border-b lg:border-b-0 lg:border-r border-black flex flex-col justify-between">
+                <div className="text-[10px] md:text-xs 3xl:text-sm uppercase font-medium tracking-widest">
+                  Obras em<br/>Destaque
+                </div>
+                <div className="hidden lg:block text-[9px] 3xl:text-[10px] uppercase tracking-[0.2em] text-black/40 font-medium">
+                  Edições Limitadas
+                </div>
+              </div>
+
+              {/* Content Column */}
+              <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2">
+                {/* Book 1 */}
+                <div className="group border-b md:border-b-0 md:border-r border-black flex flex-col">
+                  <div className="w-full aspect-[4/5] overflow-hidden bg-[#f4f4f4] border-b border-black">
+                    <img src="https://images.unsplash.com/photo-1621360841013-c76831f1b360?auto=format&fit=crop&q=80&w=1200" alt="A Poética do Espaço" className="reveal-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" referrerPolicy="no-referrer" />
+                  </div>
+                  <div className="p-8 md:p-12 3xl:p-16 flex flex-col flex-grow justify-between bg-white">
+                    <div>
+                      <h3 className="font-serif text-3xl md:text-4xl 3xl:text-5xl mb-4 italic tracking-tight">A Poética do Espaço</h3>
+                      <p className="text-xs 3xl:text-sm uppercase tracking-widest font-medium mb-6">Gaston Bachelard</p>
+                      <p className="text-sm 3xl:text-base leading-relaxed text-black/70 mb-8 max-w-md">
+                        Uma exploração fenomenológica da arquitetura e do espaço íntimo. Encadernação manual em linho cru com costura aparente.
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between pt-8 border-t border-black/10">
+                      <div className="text-[9px] 3xl:text-[10px] font-mono uppercase text-black/50 tracking-widest">
+                        Tiragem: 100 ex.
+                      </div>
+                      <button className="text-[10px] 3xl:text-xs uppercase tracking-widest font-medium hover:italic transition-all flex items-center gap-2">
+                        Adquirir Obra <ArrowUpRight className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Book 2 */}
+                <div className="group flex flex-col">
+                  <div className="w-full aspect-[4/5] overflow-hidden bg-[#f4f4f4] border-b border-black">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=1200" alt="Arquitetura da Sombra" className="reveal-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" referrerPolicy="no-referrer" />
+                  </div>
+                  <div className="p-8 md:p-12 3xl:p-16 flex flex-col flex-grow justify-between bg-white">
+                    <div>
+                      <h3 className="font-serif text-3xl md:text-4xl 3xl:text-5xl mb-4 italic tracking-tight">Arquitetura da Sombra</h3>
+                      <p className="text-xs 3xl:text-sm uppercase tracking-widest font-medium mb-6">Jun'ichirō Tanizaki</p>
+                      <p className="text-sm 3xl:text-base leading-relaxed text-black/70 mb-8 max-w-md">
+                        Um ensaio sobre a estética japonesa e a valorização do escuro. Impresso em papel de algodão 120g com tipografia em chumbo.
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between pt-8 border-t border-black/10">
+                      <div className="text-[9px] 3xl:text-[10px] font-mono uppercase text-black/50 tracking-widest">
+                        Tiragem: 50 ex.
+                      </div>
+                      <button className="text-[10px] 3xl:text-xs uppercase tracking-widest font-medium hover:italic transition-all flex items-center gap-2">
+                        Adquirir Obra <ArrowUpRight className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Section: Publications Index (Table) */}
           <section className="relative grid grid-cols-1 md:grid-cols-4 border-b border-black bg-[#f4f4f4]">
             <NoiseOverlay />
