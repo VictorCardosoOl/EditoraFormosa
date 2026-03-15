@@ -25,8 +25,8 @@ export function useReveal(containerRef: RefObject<HTMLElement | null>) {
     });
 
     // 2. Image Parallax & Reveal
-    const images = gsap.utils.toArray('.reveal-img');
-    images.forEach((img: any) => {
+    const images = gsap.utils.toArray<HTMLElement>('.reveal-img');
+    images.forEach((img) => {
       gsap.fromTo(img, 
         { scale: 1.2, filter: 'brightness(0.5)' },
         {
@@ -45,8 +45,8 @@ export function useReveal(containerRef: RefObject<HTMLElement | null>) {
     });
 
     // 3. Text Block Reveals
-    const textBlocks = gsap.utils.toArray('.reveal-text');
-    textBlocks.forEach((text: any) => {
+    const textBlocks = gsap.utils.toArray<HTMLElement>('.reveal-text');
+    textBlocks.forEach((text) => {
       gsap.from(text, {
         y: 40,
         opacity: 0,

@@ -2,8 +2,8 @@ import { Button } from '../ui/Button';
 
 export function Reservations() {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-4 border-b border-black bg-[#f4f4f4]">
-      <div className="p-4 md:p-6 3xl:p-10 border-b md:border-b-0 md:border-r border-black flex flex-col items-start justify-between min-h-[250px] 3xl:min-h-[350px]">
+    <section className="grid grid-cols-1 md:grid-cols-4 border-b border-border bg-muted">
+      <div className="p-4 md:p-6 3xl:p-10 border-b md:border-b-0 md:border-r border-border flex flex-col items-start justify-between min-h-[250px] 3xl:min-h-[350px]">
         <div className="text-[10px] md:text-xs 3xl:text-sm uppercase font-medium">
           Visitas em Grupo e<br/>Workshop de Arte
         </div>

@@ -5,11 +5,14 @@ import {defineConfig, loadEnv} from 'vite';
 
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
+  
+  // Basic validation for required environment variables
+  if (mode === 'production' && !env.APP_URL) {
+    console.warn('Warning: APP_URL environment variable is not set. Some features may not work correctly.');
+  }
+
   return {
     plugins: [react(), tailwindcss()],
-    define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

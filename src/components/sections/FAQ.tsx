@@ -3,35 +3,14 @@ import { Plus, Minus } from 'lucide-react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const FAQ_ITEMS = [
-  {
-    question: "Como posso agendar uma visita em grupo à Fundação?",
-    answer: "As visitas em grupo devem ser agendadas com pelo menos duas semanas de antecedência através do nosso portal de reservas. Para grupos escolares ou acadêmicos, oferecemos mediação especializada e acesso exclusivo aos arquivos de encadernação."
-  },
-  {
-    question: "A Editora da Villa aceita submissões de manuscritos?",
-    answer: "Atualmente, nosso foco editorial é curado internamente, focado em ensaios visuais, catálogos de arte e reedições de obras raras. Não estamos abertos a submissões não solicitadas de manuscritos de ficção ou poesia."
-  },
-  {
-    question: "Os workshops de encadernação são abertos a iniciantes?",
-    answer: "Sim. Nossos workshops são desenhados em módulos progressivos. O 'Módulo I: Fundamentos do Papel e Costura' não exige nenhuma experiência prévia e fornece todos os materiais necessários."
-  },
-  {
-    question: "É possível adquirir publicações antigas ou esgotadas do acervo?",
-    answer: "Algumas edições limitadas esgotadas estão disponíveis apenas para consulta em nossa biblioteca física. No entanto, mantemos uma lista de espera para reedições especiais. Recomendamos assinar nossa newsletter para anúncios de tiragens comemorativas."
-  },
-  {
-    question: "A Fundação oferece certificados de autenticidade para as obras?",
-    answer: "Todas as edições limitadas e obras de arte originais adquiridas diretamente através da Fundação Villa ou de nossos parceiros oficiais são acompanhadas por um certificado de autenticidade assinado, numerado e chancelado em relevo."
-  }
-];
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLElement>(null);
+  const { t } = useTranslation();
 
   // Animações GSAP
   useGSAP(() => {
@@ -70,27 +49,25 @@ export default function FAQ() {
   };
 
   return (
-    <section ref={containerRef} className="grid grid-cols-1 lg:grid-cols-12 border-b border-black bg-white">
+    <section ref={containerRef} className="grid grid-cols-1 lg:grid-cols-12 border-b border-border bg-bg">
       
       {/* COLUNA ESQUERDA (Sticky) */}
-      <div className="lg:col-span-4 3xl:col-span-3 p-8 md:p-16 lg:p-24 3xl:p-32 border-b lg:border-b-0 lg:border-r border-black">
+      <div className="lg:col-span-4 3xl:col-span-3 p-8 md:p-16 lg:p-24 3xl:p-32 border-b lg:border-b-0 lg:border-r border-border">
         <div className="faq-sticky sticky top-32">
           <div className="text-[10px] md:text-xs 3xl:text-sm uppercase tracking-widest font-medium mb-8">
-            Suporte
+            {t('faq.support')}
           </div>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl leading-[0.9] tracking-tight mb-12">
-            Dúvidas<br />Frequentes
-          </h2>
-          <button className="border border-black rounded-full px-8 py-3 3xl:px-12 3xl:py-4 text-[10px] 3xl:text-xs uppercase font-medium hover:bg-black hover:text-white transition-colors tracking-widest">
-            Fale Conosco
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl leading-[0.9] tracking-tight mb-12" dangerouslySetInnerHTML={{ __html: t('faq.title') }} />
+          <button className="border border-border rounded-full px-8 py-3 3xl:px-12 3xl:py-4 text-[10px] 3xl:text-xs uppercase font-medium hover:bg-fg hover:text-bg transition-colors tracking-widest">
+            {t('faq.contact')}
           </button>
         </div>
       </div>
 
       {/* COLUNA DIREITA (Lista) */}
       <div className="lg:col-span-8 3xl:col-span-9 faq-list flex flex-col">
-        {FAQ_ITEMS.map((item, idx) => (
-          <div key={idx} className="faq-item border-b border-black last:border-b-0">
+        {(t('faq.items', { returnObjects: true }) as { question: string, answer: string }[]).map((item, idx) => (
+          <div key={idx} className="faq-item border-b border-border last:border-b-0">
             <button
               onClick={() => toggleItem(idx)}
               className="w-full p-8 md:p-12 lg:p-16 3xl:p-24 flex justify-between items-center text-left group"
@@ -100,8 +77,8 @@ export default function FAQ() {
                 {item.question}
               </span>
               <span 
-                className={`flex-shrink-0 w-10 h-10 3xl:w-14 3xl:h-14 border border-black rounded-full flex items-center justify-center transition-all duration-300 ${
-                  openIndex === idx ? 'bg-black text-white rotate-180' : 'bg-transparent text-black group-hover:bg-black group-hover:text-white'
+                className={`flex-shrink-0 w-10 h-10 3xl:w-14 3xl:h-14 border border-border rounded-full flex items-center justify-center transition-all duration-300 ${
+                  openIndex === idx ? 'bg-fg text-bg rotate-180' : 'bg-transparent text-fg group-hover:bg-fg group-hover:text-bg'
                 }`}
               >
                 {openIndex === idx ? (
@@ -119,7 +96,7 @@ export default function FAQ() {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-8 md:px-12 lg:px-16 3xl:px-24 pb-8 md:pb-12 lg:pb-16 3xl:pb-24 text-sm md:text-base 3xl:text-lg leading-relaxed max-w-3xl text-black/70">
+                <p className="px-8 md:px-12 lg:px-16 3xl:px-24 pb-8 md:pb-12 lg:pb-16 3xl:pb-24 text-sm md:text-base 3xl:text-lg leading-relaxed max-w-3xl text-fg/70">
                   {item.answer}
                 </p>
               </div>
