@@ -117,7 +117,7 @@ export default function App() {
           </section>
 
           {/* Section 1: Video / About */}
-          <section className="relative grid grid-cols-1 md:grid-cols-4 border-b border-black">
+          <section id="manifesto" className="relative grid grid-cols-1 md:grid-cols-4 border-b border-black">
             <NoiseOverlay />
             <div className="p-4 md:p-6 3xl:p-10 border-b md:border-b-0 md:border-r border-black text-[10px] md:text-xs 3xl:text-sm uppercase font-medium">
               O Manifesto<br/>Digital
@@ -147,7 +147,7 @@ export default function App() {
           </section>
 
           {/* Section 2: Featured Publications (Books as Art) */}
-          <section className="relative border-b border-black bg-white">
+          <section id="lancamentos" className="relative border-b border-black bg-white">
             <NoiseOverlay />
             <div className="grid grid-cols-1 lg:grid-cols-12">
               {/* Header Column */}
@@ -257,7 +257,7 @@ export default function App() {
           </section>
 
           {/* Section 4: Featured Content */}
-          <section className="grid grid-cols-1 md:grid-cols-4 border-b border-black">
+          <section id="acervo" className="grid grid-cols-1 md:grid-cols-4 border-b border-black">
             <div className="p-4 md:p-6 3xl:p-10 border-b md:border-b-0 md:border-r border-black flex flex-col justify-between">
               <div className="text-[10px] md:text-xs 3xl:text-sm uppercase font-medium">Acervo<br/>Visual</div>
               <div className="flex gap-4 mt-8 md:mt-0">
@@ -289,7 +289,7 @@ export default function App() {
           </section>
 
           {/* Section 5: Text Block & Reservations */}
-          <section className="grid grid-cols-1 md:grid-cols-4 border-b border-black bg-[#f4f4f4]">
+          <section id="reservas" className="grid grid-cols-1 md:grid-cols-4 border-b border-black bg-[#f4f4f4]">
             <div className="p-4 md:p-6 3xl:p-10 border-b md:border-b-0 md:border-r border-black flex flex-col items-start justify-between min-h-[250px] 3xl:min-h-[350px]">
               <div className="text-[10px] md:text-xs 3xl:text-sm uppercase font-medium">
                 Visitas em Grupo e<br/>Workshop de Arte

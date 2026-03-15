@@ -1,6 +1,30 @@
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 
 export default function Footer() {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#') && href !== '#') {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const socialLinks = [
+    { name: 'Instagram', tooltip: 'Visit our Instagram', url: '#' },
+    { name: 'Twitter (X)', tooltip: 'Visit our Twitter', url: '#' },
+    { name: 'LinkedIn', tooltip: 'Visit our LinkedIn', url: '#' }
+  ];
+
+  const navLinks = [
+    { name: 'O Manifesto', href: '#manifesto' },
+    { name: 'Lançamentos', href: '#lancamentos' },
+    { name: 'Acervo Visual', href: '#acervo' },
+    { name: 'Reservas', href: '#reservas' },
+    { name: 'Termos de Uso', href: '#' }
+  ];
+
   return (
     <footer className="relative bg-[#050505] text-white overflow-hidden border-t border-black">
       
@@ -59,9 +83,13 @@ export default function Footer() {
           <div>
             <div className="text-[10px] 3xl:text-xs uppercase tracking-[0.2em] mb-10 text-white/40 font-medium">Conectar</div>
             <div className="flex flex-col gap-0">
-              {['Instagram', 'Twitter (X)', 'LinkedIn'].map((social) => (
-                <a key={social} href="#" className="group flex items-center justify-between border-b border-white/10 py-4 hover:border-white transition-colors">
-                  <span className="text-xs 3xl:text-sm uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">{social}</span>
+              {socialLinks.map((social) => (
+                <a key={social.name} href={social.url} className="group relative flex items-center justify-between border-b border-white/10 py-4 hover:border-white transition-colors">
+                  <span className="text-xs 3xl:text-sm uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">{social.name}</span>
+                  {/* Tooltip */}
+                  <span className="absolute left-1/3 bottom-full mb-2 bg-white text-black text-[9px] 3xl:text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-20 translate-y-2 group-hover:translate-y-0">
+                    {social.tooltip}
+                  </span>
                   <ArrowUpRight className="w-4 h-4 text-white opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
                 </a>
               ))}
@@ -78,13 +106,14 @@ export default function Footer() {
           <div>
             <div className="text-[10px] 3xl:text-xs uppercase tracking-[0.2em] mb-10 text-white/40 font-medium">Navegação</div>
             <nav className="flex flex-col gap-4">
-              {['O Manifesto', 'Acervo Visual', 'Lançamentos', 'Reservas', 'Termos de Uso'].map((link) => (
+              {navLinks.map((link) => (
                 <a 
-                  href="#" 
-                  key={link} 
+                  href={link.href} 
+                  key={link.name} 
+                  onClick={(e) => handleScroll(e, link.href)}
                   className="text-sm 3xl:text-base text-white/60 hover:text-white transition-all duration-300 hover:translate-x-2 w-fit font-serif italic"
                 >
-                  {link}
+                  {link.name}
                 </a>
               ))}
             </nav>
